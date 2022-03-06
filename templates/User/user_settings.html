@@ -1,0 +1,58 @@
+{% extends "_main.html" %}
+
+{% block title %} User settings {% endblock %}
+
+{% block main %} 
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-3">
+
+            <form action="#" method="post">
+                {{ form.csrf_token }}
+
+                {{ form.email.label }}
+                {{ form.email(class="form-control") }}
+
+                {{ form.username.label }}
+                {{ form.username(class="form-control") }}
+
+                {{ form.password.label }} 
+                {{ form.password(class="form-control") }}                           
+                
+                {% if sub == True %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="True" name="check" id="flexCheckDefault" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Subscribe newsletter
+                    </label>
+                </div>
+                {% else %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="True" name="check" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Subscribe newsletter
+                    </label>
+                </div>
+                {% endif %}
+
+                
+                <button type="submit" class="my-3 btn btn-primary">Change</button>
+
+            </form>
+        
+        </div> {# col 6 #}
+    </div> {# row #}
+</div> {# container #}
+
+<form action="{{ url_for('user.logout') }}" method="post">
+    <button type="submit" class="btn btn-primary">Logout</button>
+</form>
+
+<form action="{{ url_for('user.change_password') }}" method="post">
+    <button type="submit" class="my-1 btn btn-secondary">Change password</button>
+</form>
+
+
+{% endblock%}

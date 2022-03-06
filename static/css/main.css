@@ -1,0 +1,40 @@
+html {
+    position: relative;
+    min-height: 100%;
+    zoom: 120%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.content {
+    margin-top: 2%;
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.distance {
+    top: 10%;
+}
+
+.articles {
+    right: 20%;
+} 
+
+.article-options{
+    margin-left: 80%;
+}
+.footer {
+    color: white;
+    text-align: center;
+
+    width: 100%;
+    height: 40px;
+    line-height: 40px; /* Vertically center the text there */
+    background-color: #5C5C5C;
+    position: absolute;
+    bottom: 0;
+}
+
+

@@ -1,0 +1,18 @@
+{% extends "_main.html" %}
+
+{% block title %} Article {% endblock %}
+
+{% block main %} 
+    {% if session["logged"] == article.author %}
+    <div class="article-options">
+        <a href="{{ url_for('article.view_edit_article', art_id=article.id) }}">Edit</a>
+        <a href="{{ url_for('article.delete_article', art_id=article.id) }}">Delete</a>
+    </div>
+    {% endif %}
+
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.content }}</p>
+    <br>
+    <p>Author: {{ article.author }}</p>
+
+{% endblock%}

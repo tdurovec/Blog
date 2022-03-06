@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    
+    {% block head %}
+        {% include "_head.html" %}
+    {% endblock %}
+    
+</head>
+<body>
+
+    <nav class="navbar-dark bg-dark">
+       
+        <ul class="nav justify-content-center">    
+
+            <li class="nav-item text-white">
+                <a class="nav-link text-light box-shadow" href="{{url_for('article.view_home')}}">Home</a>            
+            </li>
+     
+            <li class="nav-item text-white">
+                <a class="nav-link text-light box-shadow" href="{{url_for('article.view_about')}}">Abaut</a>
+            </li>
+
+            <li class="nav-item text-white">
+                <a class="nav-link text-light" href="{{url_for('article.view_articles')}}">Articles</a>
+            </li>
+            {% if "logged" in session %}
+                <li class="nav-item text-white">
+                    <a class="nav-link text-light" href="{{url_for('article.view_add_article')}}">Add Arcticle</a>
+                </li>
+            
+                <li class="nav-item text-white">
+                    <a class="nav-link text-light" href="{{url_for('user.user_settings', username=session['logged'])}}">Account: {{ session["logged"] }}</a>
+                </li>
+            {% endif %}
+        
+            {% if "logged" not in session %}
+            <li class="nav-item text-white">
+                <a class="nav-link text-light" href="{{url_for('user.view_login')}}">Login</a>
+            </li>
+            <li class="nav-item text-white">
+                <a class="nav-link text-light" href="{{url_for('user.view_register')}}">Register</a>
+            </li>
+            
+            {% endif %}
+        
+        </ul>
+
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-9">
+                        <div class="alert {{ category }} alert-dismissible" data-dismiss="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+        <main class="content">
+            {% block main %} {% endblock%}
+        </main>
+
+    <div class="footer">
+        <footer>(c) 2021 BLOG</footer>
+    </div>
+
+</body>
+
+</html>
