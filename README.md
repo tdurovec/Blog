@@ -2,7 +2,9 @@
 Simple blogging platform
 
 Add email and unable access less secure applications
-****/configs/default.py
+````
+/configs/default.py
+````
 
 Database inicialize
 python run.py init
