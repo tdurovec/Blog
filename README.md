@@ -1,4 +1,4 @@
-# Blog
+# Simple Blog
 Simple blogging platform
 
 Add email and unable access less secure applications
